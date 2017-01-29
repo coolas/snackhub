@@ -1,9 +1,6 @@
 class MallsController < ApplicationController
-private
-    def mall_params    
-      params.require(:mall).permit(:name)
-    end
-	
+
+
   def index
   	@malls = Mall.all
   end
@@ -40,4 +37,9 @@ private
     flash[:notice] = "Successfully destroyed product."
     respond_with(@malls, :responder => MyResponder)
   end
+
+  private
+    def mall_params    
+      params.require(:mall).permit(:name)
+    end
 end
