@@ -1,0 +1,16 @@
+<% title "malls" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @malls.name %>
+</p>
+<p>
+  <strong>Price:</strong>
+  <%= @malls.price %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_product_path(@product) %> |
+  <%= link_to "Destroy", @malls, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", malls_path %>
+</p>
