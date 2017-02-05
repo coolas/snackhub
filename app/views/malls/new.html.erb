@@ -1,7 +1,10 @@
+<%= form_for @mall do |f| %>
 
+<%= f.label :name %> </br>
+<%= f.text_field :name %></br>
 
+<%= f.label :address %> </br>
+<%= f.text_field :address %> </br>
 
-<%= render 'malls/form' %>
-
-<%= yield %>
-
+<%= f.submit %>
+<% end %>

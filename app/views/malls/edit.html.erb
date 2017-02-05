@@ -1,8 +1,10 @@
-<% title "Edit Mall" %>
+	<%= form_for @mall do |f| %>
 
-<%= render 'malls/form' %>
+	<%= f.label :name %> </br>
+	<%= f.text_field :name %></br>
 
-<p>
-  <%= link_to "Show", @malls %> |
-  <%= link_to "View All", products_path %>
-</p>
+	<%= f.label :address %> </br>
+	<%= f.text_field :address %> </br>
+
+	<%= f.submit %>
+	<% end %>

@@ -1,22 +1,11 @@
 <h1>Malls</h1>
-
-
-
-
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Price</th>
-  </tr>
-  <%= @malls.inspect %>
-    <tr>
-      <td><%= mall.name %></td>
-      <td><%= mall.price %></td>
-      <td><%= link_to "Show", mall %></td>
-      <td><%= link_to "Edit", edit_mall_path(mall) %></td>
-      <td><%= link_to "Destroy", mall, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
-
+<%= link_to 'Add Mall', new_mall_path %>
+<% @malls.each do |mall| %>
+<p>
+   Name: <%= link_to mall.name, mall_path(mall) %> </br>
+   Address: <%= mall.address %> </br> | <%= link_to 'Edit',
+   edit_mall_path(mall) %> | <%= link_to 'Delete', mall, method: :delete %>
+ </p>
+      
+    
+  <% end %> 
