@@ -1,5 +1,10 @@
 <%= simple_form_for(@mall) do |f| %>
-
+  <% if @mall.errors.any? %>
+  <%= pluralize(@mall.errors.count, "error") %>
+  	<%= @mall.errors.full_messages.each do |msg| %>
+  <%= msg %>
+  	<% end %>
+  <% end %>
 <%= f.error_notification %>
 <%= f.input :name %>
 <%= f.input :address %>

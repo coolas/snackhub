@@ -1,0 +1,13 @@
+<%= simple_form_for(@location) do |f| %>
+  <% if @location.errors.any? %>
+  <%= pluralize(@location.errors.count, "error") %>
+  	<%= @location.errors.full_messages.each do |msg| %>
+  <%= msg %>
+  	<% end %>
+  <% end %>
+<%= f.error_notification %>
+<%= f.input :province %>
+
+<%= f.button :submit %>
+
+<% end %>

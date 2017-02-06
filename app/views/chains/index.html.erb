@@ -1,0 +1,12 @@
+<h1>Chains</h1>
+<%= link_to 'Add Chains', new_chain_path %>
+<% @chains.each do |chain| %>
+<p>
+   Name: <%= link_to chain.name, chain_path(chain) %> </br>
+   Mall: <%= link_to chain.mall.name, "/malls/#{chain.mall.id}" %> </br> 
+ | <%= link_to 'Edit',
+ edit_chain_path(chain) %> | <%= link_to 'Delete', chain, method: :delete %>
+ </p>
+      
+    
+  <% end %> 
