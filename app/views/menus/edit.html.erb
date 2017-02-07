@@ -1,0 +1,10 @@
+	<%= form_for @menu do |f| %>
+
+	<%= f.label :name %> </br>
+	<%= f.text_field :name %></br>
+	<%=f.label :name %></br>
+	<%= f.select :chain_id, Chain.all.map{ |m| [m.name, m.id] } %> </br>
+
+
+	<%= f.submit %>
+	<% end %>

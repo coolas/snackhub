@@ -1,0 +1,13 @@
+<%= simple_form_for(@menu) do |f| %>
+  <% if @menu.errors.any? %>
+  <%= pluralize(@menu.errors.count, "error") %>
+  	<%= @menu.errors.full_messages.each do |msg| %>
+  <%= msg %>
+  	<% end %>
+  <% end %>
+<%= f.error_notification %>
+<%= f.input :name %>
+<%= f.select :chain_id, Chain.all.map{ |m| [m.name, m.id] } %>
+<%= f.button :submit %>
+
+<% end %>

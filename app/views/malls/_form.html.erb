@@ -7,6 +7,8 @@
   <% end %>
 <%= f.error_notification %>
 <%= f.input :name %>
+<%= f.label :province %>
+<%= f.select :location_id, Location.all.map{ |m| [m.province, m.id] } %>
 <%= f.input :address %>
 <%= f.button :submit %>
 

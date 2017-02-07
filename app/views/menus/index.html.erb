@@ -1,0 +1,11 @@
+<h1>Menu</h1>
+<%= link_to 'Add Menu', new_menu_path %>
+<% @menus.each do |menu| %>
+<p>
+   Name: <%= link_to menu.name, menu_path(menu) %> </br>
+   Chains: <%= link_to menu.chain.name, "/Chains/#{menu.chain.id}" %> </br> | <%= link_to 'Edit',
+   edit_menu_path(menu) %> | <%= link_to 'Delete', menu, method: :delete %>
+ </p>
+      
+    
+  <% end %> 

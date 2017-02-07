@@ -1,3 +1,3 @@
 class Location < ActiveRecord::Base
-	has_many: malls
+	has_many :malls
 end

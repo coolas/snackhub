@@ -1,0 +1,14 @@
+<h1>Items</h1>
+<%= link_to 'Add Items', new_item_path %>
+<% @items.each do |item| %>
+<p>
+   Name: <%= link_to item.name, item_path(item) %> </br>
+   Description: <%= link_to item.description, item_path(item) %></br>
+   Price: <%= link_to item.price, item_path(item) %></br>
+   
+ | <%= link_to 'Edit',
+ edit_item_path(item) %> | <%= link_to 'Delete', item, method: :delete %>
+ </p>
+      
+    
+  <% end %> 

@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   resources :malls
   resources :chains
   resources :locations
+  resources :items
+  resources :menus
 
   # Example resource route with options:
   #   resources :products do
