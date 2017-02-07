@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170207055533) do
+ActiveRecord::Schema.define(version: 20170207065903) do
 
   create_table "chains", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -54,6 +54,16 @@ ActiveRecord::Schema.define(version: 20170207055533) do
   end
 
   add_index "menus", ["chain_id"], name: "index_menus_on_chain_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.float    "total",            limit: 24
+    t.string   "reference_number", limit: 255
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "user_id",          limit: 4
+  end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name",          limit: 255

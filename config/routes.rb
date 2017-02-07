@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :locations
   resources :items
   resources :menus
+  resources :order
 
   # Example resource route with options:
   #   resources :products do
