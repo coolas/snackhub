@@ -3,8 +3,6 @@ class MallsController < ApplicationController
 
   def index
     @malls = Mall.all
-    #respond_to do |format|
-     #format.html
   end
 
   def show
