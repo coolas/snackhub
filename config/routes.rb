@@ -1,11 +1,16 @@
 require 'api_constraints'
 Rails.application.routes.draw do
     namespace :api, defaults:{ format: :json } do
-      scope module: :v1, constraints: ApiConstraints.new(version: 1) do
-        resource :malls do
+      scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
+        resources :malls 
+        resources :chains
+        resources :items
+        resources :locations
+        resources :menus
+        resources :orders
       end
     end
-  end
+  
 
   devise_for :users
 
@@ -32,7 +37,7 @@ Rails.application.routes.draw do
   resources :locations
   resources :items
   resources :menus
-  resources :order
+  resources :orders
   
 
 

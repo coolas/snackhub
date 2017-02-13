@@ -1,10 +1,10 @@
 module Api
   module V1
-    class MallsController < ApiController
+    class ItemsController < ApiController
       respond_to :json
       
       def index
-        respond_with Mall.all
+        respond_with Item.all
       end
       def new
       end
