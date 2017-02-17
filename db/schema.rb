@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170207072941) do
+ActiveRecord::Schema.define(version: 20170217120937) do
+
+  create_table "add_cinema_number_to_orders", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "chains", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -21,6 +26,13 @@ ActiveRecord::Schema.define(version: 20170207072941) do
   end
 
   add_index "chains", ["mall_id"], name: "index_chains_on_mall_id", using: :btree
+
+  create_table "chains_malls", force: :cascade do |t|
+    t.integer  "chain_id",   limit: 4
+    t.integer  "mall_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
 
   create_table "items", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -71,6 +83,7 @@ ActiveRecord::Schema.define(version: 20170207072941) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.integer  "user_id",          limit: 4
+    t.string   "cinema_number",    limit: 255
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree

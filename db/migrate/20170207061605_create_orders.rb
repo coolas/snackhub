@@ -3,6 +3,7 @@ class CreateOrders < ActiveRecord::Migration
     create_table :orders do |t|
       t.float :total
       t.string :reference_number
+      	
 
       t.timestamps null: false
     end
