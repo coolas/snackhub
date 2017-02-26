@@ -4,7 +4,12 @@ module Api
       respond_to :json
       
       def index
-        respond_with Menu.all
+        if params[:chain_id].nil?
+          @menus = Menu.all
+        else 
+          @menus = Menu.where(chain_id: params[:chain_id])
+        end
+        render json: @menus
       end
       def new
       end

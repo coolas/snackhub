@@ -1,6 +1,6 @@
 class Chain < ActiveRecord::Base
   belongs_to :mall
-  has_many :menu
+  has_many :menus
 end
 
 class Mall < ActiveRecord::Base

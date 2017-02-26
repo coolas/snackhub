@@ -8,11 +8,21 @@ Rails.application.routes.draw do
         resources :locations
         resources :menus
         resources :orders
+        resources :users
       end
     end
   
 
   devise_for :users
+
+  namespace :api do
+   scope :v1 do
+     mount_devise_token_auth_for 'User', at: 'auth', controllers: {
+        sessions: 'overrides/sessions'
+     }
+     resources :users, only: [:index, :show, :create, :update, :destroy]
+   end
+  end    
 
   
 

@@ -9,6 +9,8 @@
 <%= f.input :name %>
 <%= f.input :description %>
 <%= f.input :price %>
+<%= f.select :menu_id, Menu.all.map{ |m| [m.name, m.id] } %>
+
 
 
 <%= f.button :submit %>

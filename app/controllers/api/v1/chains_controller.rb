@@ -4,7 +4,12 @@ module Api
       respond_to :json
       
       def index
-        respond_with Chain.all
+        if params[:mall_id].nil?
+          @chains = Chain.all
+        else 
+          @chains = Chain.where(mall_id: params[:mall_id])
+        end
+          render json: @chains
       end
       def new
       end

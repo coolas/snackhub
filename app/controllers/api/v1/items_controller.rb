@@ -4,7 +4,12 @@ module Api
       respond_to :json
       
       def index
-        respond_with Item.all
+        if params[:menu_id].nil?
+          @items = Item.all
+        else 
+          @items = Item.where(menu_id: params[:menu_id])
+        end
+          render json: @items
       end
       def new
       end
