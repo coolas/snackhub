@@ -14,6 +14,8 @@ module Api
       def new
       end
       def show
+        @menu = Menu.find(params[:id])
+        render json: @menu, root: false
       end
      
       def create

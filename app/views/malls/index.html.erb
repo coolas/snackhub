@@ -3,8 +3,8 @@
 <% @malls.each do |mall| %>
 <p>
    Name: <%= link_to mall.name, mall_path(mall) %> </br>
-   Address: <%= mall.address %> </br>
-   Mall: <%= link_to mall.location.province, "/locations/#{mall.location.id}" %> </br> | <%= link_to 'Edit',
+   Address: <%= mall.address %> </br> 
+   <%= link_to 'Edit',
    edit_mall_path(mall) %> | <%= link_to 'Delete', mall, method: :delete %>
  </p>
       

@@ -9,6 +9,8 @@ module Api
       def new
       end
       def show
+        @mall = Mall.find(params[:id])
+        render json: @mall, root: false
       end
      
       def create

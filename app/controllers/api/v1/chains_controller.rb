@@ -1,7 +1,7 @@
 module Api
   module V1
     class ChainsController < ApiController
-      respond_to :json
+      #respond_to :json
       
       def index
         if params[:mall_id].nil?
@@ -12,8 +12,12 @@ module Api
           render json: @chains
       end
       def new
+
       end
+
       def show
+        @chain = Chain.find(params[:id])
+        render json: @chain, root: false
       end
      
       def create
