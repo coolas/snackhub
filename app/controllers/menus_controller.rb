@@ -2,6 +2,8 @@ class MenusController < ApplicationController
   load_and_authorize_resource
 
   def index
+    puts "\n\n\n\n"
+    puts current_user.inspect
     if current_user.has_role? :superadmin
       @menus = Menu.all
     elsif current_user.has_role? :admin

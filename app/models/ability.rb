@@ -4,6 +4,8 @@ class Ability
   def initialize(user)
     puts "ABILITY"
     puts user.inspect
+    puts "ROLE"
+    puts user.has_role? :admin
 
     if user.has_role? :superadmin
         can :manage, :all
@@ -14,7 +16,6 @@ class Ability
         can :manage, Item
         can :manage, Order
         can :manage, OrderItem
-       #can :read, :all
     end
     # Define abilities for the passed in user here. For example:
     #
