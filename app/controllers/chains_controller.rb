@@ -1,5 +1,6 @@
 class ChainsController < ApplicationController
-
+  load_and_authorize_resource
+  
   def index
     @chains = Chain.all
     #respond_to do |format|

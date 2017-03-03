@@ -1,5 +1,5 @@
 class MallsController < ApplicationController
-
+  load_and_authorize_resource
 
   def index
     @malls = Mall.all

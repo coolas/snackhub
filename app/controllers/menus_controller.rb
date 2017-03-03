@@ -1,6 +1,12 @@
 class MenusController < ApplicationController
-def index
-    @menus = Menu.all
+  load_and_authorize_resource
+
+  def index
+    if current_user.has_role? :superadmin
+      @menus = Menu.all
+    elsif current_user.has_role? :admin
+      @menus = Menu.where(chain_id: current_user.chain_id)
+    end
     #respond_to do |format|
      #format.html
   end

@@ -1,9 +1,12 @@
 class OrdersController < ApplicationController
+  load_and_authorize_resource
 
   def index
-    @orders = Order.all
-    #respond_to do |format|
-     #format.html
+    if current_user.has_role? :superadmin
+      @orders = Order.all
+    elsif current_user.has_role? :admin
+      @orders = Order.where(chain_id: current_user.chain_id)
+    end
   end
 
   def show

@@ -9,9 +9,11 @@
 <%= f.input :name %>
 <%= f.input :description %>
 <%= f.input :price %>
-<%= f.select :menu_id, Menu.all.map{ |m| [m.name, m.id] } %>
-
-
+<% if current_user.has_role? :super_admin %>
+	<%= f.select :menu_id, Menu.all.map{ |m| [m.name, m.id] } %>
+<% else %>
+	<%= f.input :menu_id, as: :hidden, input_html: { value: current_user.chain.menus.first.id } %>
+<% end %>
 
 <%= f.button :submit %>
 

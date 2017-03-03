@@ -1,5 +1,6 @@
 class LocationsController < ApplicationController
-
+ load_and_authorize_resource
+ 
  def index
     @locations = Location.all
     #respond_to do |format|
