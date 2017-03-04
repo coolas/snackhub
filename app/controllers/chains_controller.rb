@@ -12,14 +12,24 @@ class ChainsController < ApplicationController
   end
 
   def new #new record
-  	@chain = Chain.new
+    @chain = Chain.new
+    if current_user.has_role? :admin
+      if !current_user.chain_id.nil?
+      	redirect_to new_menu_path
+      end
+    end
   	
   end	
 
   def create
   	@chain = Chain.new(chain_params)
   	if @chain.save
-  		redirect_to chains_path
+  		if current_user.has_role? :superadmin
+  			redirect_to chains_path
+  		elsif current_user.has_role? :admin
+  			current_user.update_attributes(chain_id: @chain.id)
+  			redirect_to new_menu_path
+  		end
   	else
   		render 'new'
   	end

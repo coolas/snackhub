@@ -12,6 +12,7 @@ class Ability
         #puts "SUPERADMIN"
     elsif user.has_role? :admin
         #puts "ADMIN"
+        can :manage, Chain
         can :manage, Menu
         can :manage, Item
         can :manage, Order

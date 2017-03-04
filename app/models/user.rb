@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
   
   belongs_to :chain
   has_many :orders
+
+  attr_accessor :is_chain
 end

@@ -7,7 +7,13 @@
   <% end %>
 <%= f.error_notification %>
 <%= f.input :name %>
+
+<% if current_user.has_role? :superadmin %>
 <%= f.select :chain_id, Chain.all.map{ |m| [m.name, m.id] } %>
+<% else %>
+<%= f.input :chain_id, as: :hidden, input_html: { value: current_user.chain_id } %>
+<% end %>
+
 <%= f.button :submit %>
 
 <% end %>
