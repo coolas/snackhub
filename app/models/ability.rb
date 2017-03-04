@@ -2,16 +2,16 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    puts "ABILITY"
-    puts user.inspect
-    puts "ROLE"
-    puts user.has_role? :admin
+    #puts "ABILITY"
+    #puts user.inspect
+    #puts "ROLE"
+    #puts user.has_role? :admin
 
     if user.has_role? :superadmin
         can :manage, :all
-        puts "SUPERADMIN"
+        #puts "SUPERADMIN"
     elsif user.has_role? :admin
-        puts "ADMIN"
+        #puts "ADMIN"
         can :manage, Menu
         can :manage, Item
         can :manage, Order

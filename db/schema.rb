@@ -27,13 +27,6 @@ ActiveRecord::Schema.define(version: 20170226062725) do
 
   add_index "chains", ["mall_id"], name: "index_chains_on_mall_id", using: :btree
 
-  create_table "chains_malls", force: :cascade do |t|
-    t.integer  "chain_id",   limit: 4
-    t.integer  "mall_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
   create_table "items", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
