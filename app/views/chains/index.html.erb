@@ -1,12 +1,24 @@
-<h1>Chains</h1>
-<%= link_to 'Add Chains', new_chain_path %>
-<% @chains.each do |chain| %>
-<p>
-   Name: <%= link_to chain.name, chain_path(chain) %> </br>
-   Mall: <%= link_to chain.mall.name, "/malls/#{chain.mall.id}" %> </br> 
- | <%= link_to 'Edit',
- edit_chain_path(chain) %> | <%= link_to 'Delete', chain, method: :delete %>
- </p>
-      
-    
-  <% end %> 
+<div class="page-header">
+  <h1>Chains</h1>
+</div>
+
+<%= link_to 'Add Chains', new_chain_path, class: 'btn btn-primary pull-right' %>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Mall</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @chains.each do |chain| %>
+			<tr>
+				<td><%= link_to chain.name, chain_path(chain) %></td>
+				<td><%= link_to chain.mall.name, "/malls/#{chain.mall.id}" %></td>
+				<td><%= link_to 'Edit', edit_chain_path(chain) %> | <%= link_to 'Delete', chain, method: :delete %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
