@@ -13,6 +13,7 @@
  * require_tree .
  * require_self
  */
+ 
 .simple_form label {
   float: left;
   width: 100px;
