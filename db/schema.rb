@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170304030430) do
+ActiveRecord::Schema.define(version: 20170310132052) do
 
   create_table "add_cinema_number_to_orders", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20170304030430) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "menu_id",     limit: 4
+    t.string   "item_image",  limit: 255
   end
 
   add_index "items", ["menu_id"], name: "index_items_on_menu_id", using: :btree

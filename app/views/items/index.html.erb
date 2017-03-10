@@ -10,6 +10,7 @@
 			<th>Food Name</th>
 			<th>Description</th>
 			<th>Price</th>
+			<th>Image</th>
 			<th>Actions</th>
 		</tr>
 	</thead>
@@ -19,6 +20,7 @@
 				<td><%= link_to item.name, item_path(item) %></td>
 				<td><%= link_to item.description, item_path(item) %></td>
 				<td><%= link_to item.price, item_path(item) %></td>
+				<td><%= image_tag item.item_image.to_s %></td>
 				<td><%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item, method: :delete %></td>
 			</tr>
 		<% end %>
