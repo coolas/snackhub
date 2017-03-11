@@ -8,6 +8,7 @@
 <%= f.error_notification %>
 <%= f.input :name %>
 <%= f.select :mall_id, Mall.all.map { |m| [m.name, m.id] } %>
+<%= f.file_field :chain_logo %>
 
 
 <%= f.button :submit %>

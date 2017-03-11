@@ -9,6 +9,7 @@
 		<tr>
 			<th>Name</th>
 			<th>Mall</th>
+			<th>Logo</th>
 			<th>Actions</th>
 		</tr>
 	</thead>
@@ -17,6 +18,7 @@
 			<tr>
 				<td><%= link_to chain.name, chain_path(chain) %></td>
 				<td><%= link_to chain.mall.name, "/malls/#{chain.mall.id}" %></td>
+				<td><%= image_tag chain.chain_logo.to_s %></td>
 				<td><%= link_to 'Edit', edit_chain_path(chain) %> | <%= link_to 'Delete', chain, method: :delete %></td>
 			</tr>
 		<% end %>
