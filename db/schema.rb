@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170311111347) do
+ActiveRecord::Schema.define(version: 20170311120230) do
 
   create_table "add_cinema_number_to_orders", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -75,8 +75,11 @@ ActiveRecord::Schema.define(version: 20170311111347) do
   create_table "order_items", force: :cascade do |t|
     t.integer  "order_id",   limit: 4
     t.integer  "item_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "quantity",   limit: 4
+    t.float    "subtotal",   limit: 24
+    t.string   "name",       limit: 255
   end
 
   add_index "order_items", ["item_id"], name: "index_order_items_on_item_id", using: :btree
