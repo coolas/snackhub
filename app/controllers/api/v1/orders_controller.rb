@@ -32,7 +32,7 @@ module Api
       private
 
       def order_params
-        params.require(:order).permit(:total, :reference_number, :user_id)
+        params.require(:order).permit(:total, :reference_number, :user_id, :contact_number, :cinema_number, :remarks)
       end
     end
   end
