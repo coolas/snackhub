@@ -4,8 +4,14 @@ module Api
       respond_to :json
       
       def index
-        respond_with OrderItem.all
+        if params[:order_id].nil?
+          @order_items = OrderItem.all
+        else 
+          @order_items = OrderItem.where(order_id: params[:order_id])
+        end
+        render json: @order_items
       end
+
       def new
       end
       def show
