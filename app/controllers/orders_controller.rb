@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   def index
     if current_user.has_role? :superadmin
-      @orders = Order.order(sort_column + " " + sort_direction)
+      Order.order("ASC id").all
     elsif current_user.has_role? :admin
       @orders = Order.where(chain_id: current_user.chain_id)
     end
@@ -45,20 +45,10 @@ class OrdersController < ApplicationController
   		redirect_to orders_path
   end
 
-
-
   private
     def order_params    
       params.require(:order).permit(:total, :reference_number, :user_id)
     end 
-
-    def sort_column
-      @order.id.include?(params[:sort]) ? params[:sort] : "id"
-    end
-
-    def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-    end
 
 
 end
