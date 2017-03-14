@@ -1,17 +1,29 @@
-<h1>Orders</h1>
-<%= link_to 'Add Orders', new_order_path %>
-<% @orders.each do |order| %>
-<p>
-   Cinema Number: <%= link_to order.cinema_number, order_path(order) %> </br>
-   Remarks: <%= link_to order.remarks, order_path(order) %> </br>
-   Total: <%= link_to order.total, order_path(order) %> </br>
-   Contact Number: <%= link_to order.contact_number, order_path(order) %> </br>
-   
+<div class="page-header">
+  <h1>Orders</h1>
+</div>
 
-    
- | <%= link_to 'Edit',
- edit_order_path(order) %> | <%= link_to 'Delete', order, method: :delete %>
- </p>
-      
-    
-  <% end %> 
+<%= link_to 'Add Orders', new_order_path, class: 'btn btn-primary pull-right' %>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Cinema Number</th>
+			<th>Remarks</th>
+			<th>Contact Number</th>
+			<th>Total</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @items.each do |item| %>
+			<tr>
+				<td><%= link_to order.cinema_number, order_path(order) %></td>
+				<td><%= link_to order.remarks, order_path(order) %></td>
+				<td><%= link_to order.contact_number, order_path(order) %></td>
+				<td><%= link_to order.total, order_path(order) %></td>
+				<td><%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item, method: :delete %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
