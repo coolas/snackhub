@@ -3,6 +3,11 @@
 <% @orders.each do |order| %>
 <p>
    Cinema Number: <%= link_to order.cinema_number, order_path(order) %> </br>
+   Remarks: <%= link_to order.remarks, order_path(order) %> </br>
+   Total: <%= link_to order.total, order_path(order) %> </br>
+   Contact Number: <%= link_to order.contact_number, order_path(order) %> </br>
+   
+
     
  | <%= link_to 'Edit',
  edit_order_path(order) %> | <%= link_to 'Delete', order, method: :delete %>
