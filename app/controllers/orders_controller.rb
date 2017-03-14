@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   def index
     if current_user.has_role? :superadmin
-      Order.order("id DESC").all
+      Order.order("created_at DESC").all
     elsif current_user.has_role? :admin
       @orders = Order.where(chain_id: current_user.chain_id)
     end
