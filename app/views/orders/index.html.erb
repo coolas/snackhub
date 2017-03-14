@@ -23,7 +23,7 @@
 				<td><%= link_to order.remarks, order_path(order) %></td>
 				<td><%= link_to order.contact_number, order_path(order) %></td>
 				<td><%= link_to order.total, order_path(order) %></td>
-				<td><%= link_to 'Edit', edit_order_path(order) %> | <%= link_to 'Delete', item, method: :delete %></td>
+				<td><%= link_to 'Edit', edit_order_path(order) %> | <%= link_to 'Delete', item, method: :delete%></td>
 			</tr>
 		<% end %>
 	</tbody>
