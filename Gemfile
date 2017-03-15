@@ -54,7 +54,7 @@ group :assets do
   gem 'jquery-ui-rails'
 end
 
-gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 
 gem 'devise'
 gem 'devise_token_auth'
