@@ -1,5 +1,11 @@
 <div class="page-header">
   <h1>Orders</h1>
+  <%= form_tag order_path, method: => 'get' do %>
+  <p>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search" %>
+  </p>
+<% end %>
 </div>
 
 <%= link_to 'Add Orders', new_order_path, class: 'btn btn-primary pull-right' %>
