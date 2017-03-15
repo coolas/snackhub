@@ -4,7 +4,7 @@
 
 <%= link_to 'Add Orders', new_order_path, class: 'btn btn-primary pull-right' %>
 
-<table id="Orders" class="display"%>">
+<table id="Orders" class="display">
 	<thead>
 		<tr>
 			<th>Reference Number</th>
@@ -28,5 +28,7 @@
 		<% end %>
 	</tbody>
 </table>
+
+<%= will_paginate @orders %>
 
 
