@@ -3,9 +3,9 @@ class OrdersController < ApplicationController
 
   def index
     if current_user.has_role? :superadmin
-      @orders = Order.order(created_at: :desc).paginate(:page => params[:page], per_page: 5)
+      @orders = Order.order(created_at: :desc).paginate(:page => params[:page], per_page: 5).find(:all, :conditions => ['name LIKE ?', "%{params[:search]}%"])
     elsif current_user.has_role? :admin
-      @orders = Order.where(chain_id: current_user.chain_id).order(created_at: :desc)
+      @orders = Order.where(chain_id: current_user.chain_id).order(created_at: :desc).paginate(:page => params[:page], per_page: 5)
     end
   end
 
