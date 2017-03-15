@@ -13,6 +13,5 @@
 //= require jquery
 //= bootstrap-sprockets
 //= require jquery_ujs
-//= require dataTables/jquery.dataTables
 //= require turbolinks
 //= require_tree .
