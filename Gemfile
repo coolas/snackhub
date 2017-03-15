@@ -49,6 +49,13 @@ group :development do
   gem 'spring'
 end
 
+group :assets do
+  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+  gem 'jquery-ui-rails'
+end
+
+gem 'will_paginate'
+
 gem 'devise'
 gem 'devise_token_auth'
 gem 'cancancan'
