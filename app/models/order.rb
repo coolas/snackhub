@@ -12,5 +12,16 @@ class Order < ActiveRecord::Base
     self.save!
  end
  after_create :generate_order_reference_number
+
+ def self.search(search)
+  	@orders = Order.all
+    @orders = where(['cinema_number LIKE ?', "%#{search}"])
+    @orders = where(['remarks LIKE ?', "%#{search}%"])
+    @orders = where(['contact_number LIKE ?', "%#{search}%"])
+    @orders = where(['reference_number LIKE ?', "%#{search}%"])
+ 
+ end
+
+
 end
 

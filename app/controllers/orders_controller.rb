@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   def index
     if current_user.has_role? :superadmin
-      @orders = Order.order(created_at: :desc).paginate(:page => params[:page], per_page: 5)
+      @orders = Order.order(created_at: :desc).paginate(:page => params[:page], per_page: 5).search(params[:search])
     elsif current_user.has_role? :admin
       @orders = Order.where(chain_id: current_user.chain_id).order(created_at: :desc).paginate(:page => params[:page], per_page: 5)
     end
@@ -47,7 +47,7 @@ class OrdersController < ApplicationController
 
   private
     def order_params    
-      params.require(:order).permit(:total, :reference_number, :user_id)
+      params.require(:order).permit(:total, :reference_number, :user_id, :remarks, :contact_number, :status)
     end 
 
 

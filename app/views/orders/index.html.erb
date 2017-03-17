@@ -1,11 +1,12 @@
 <div class="page-header">
   <h1>Orders</h1>
-  <%= @orders.each method: => 'get' do |f| %>
-  <p>
-  <%= f.text_field :search, params[:search] %>
-  <%= f.submit "Search" %>
-  </p>
-<% end %>
+	<%= form_tag(orders_path, :method => "get") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Orders" %>
+    <%= submit_tag "Search", :all => nil %>
+    <% end %>
+
+  
+
 </div>
 
 <%= link_to 'Add Orders', new_order_path, class: 'btn btn-primary pull-right' %>
@@ -19,6 +20,7 @@
 			<th>Remarks</th>
 			<th>Contact Number</th>
 			<th>Total</th>
+			<th>Status</th>
 			<th>Actions</th>
 		</tr>
 	</thead>
@@ -30,6 +32,7 @@
 				<td><%= link_to order.remarks, order_path(order) %></td>
 				<td><%= link_to order.contact_number, order_path(order) %></td>
 				<td><%= link_to order.total, order_path(order) %></td>
+				<td><%= link_to order.status, order_path(order) %></td>
 				<td><%= link_to 'Edit', edit_order_path(order) %> | <%= link_to 'Delete', order, method: :delete %></td>
 			</tr>
 		<% end %>

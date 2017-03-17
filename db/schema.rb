@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170311120230) do
+ActiveRecord::Schema.define(version: 20170317170002) do
 
   create_table "add_cinema_number_to_orders", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -94,8 +94,11 @@ ActiveRecord::Schema.define(version: 20170311120230) do
     t.string   "cinema_number",    limit: 255
     t.string   "remarks",          limit: 255
     t.string   "contact_number",   limit: 255
+    t.string   "status",           limit: 255
+    t.integer  "chain_id",         limit: 4
   end
 
+  add_index "orders", ["chain_id"], name: "index_orders_on_chain_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
