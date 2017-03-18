@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   
 
-  devise_for :users
+  devise_for :users, controllers: { confirmations: 'confirmations'}
 
   namespace :api do
    scope :v1 do
