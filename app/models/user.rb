@@ -4,14 +4,14 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-         #, :confirmable
+         , :confirmable
 
   include DeviseTokenAuth::Concerns::User
   
   belongs_to :chain
   has_many :orders
 
-  #after_create :send_confirmation_instructions
+  after_create :send_confirmation_instructions
 
   attr_accessor :is_chain
 end
