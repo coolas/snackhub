@@ -30,5 +30,18 @@ class ApplicationController < ActionController::Base
   		end
   	end
   end
+
+  def after_confirmation_path_for(resource_name, resource)
+    if resource.chain_id.nil?
+      new_chain_path
+    else
+      if resource.has_role? :admin
+        orders_path
+      else
+        malls_path
+      end
+
+    end
+  end
   
 end
