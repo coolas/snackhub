@@ -11,5 +11,7 @@ class User < ActiveRecord::Base
   belongs_to :chain
   has_many :orders
 
+  #after_create :send_confirmation_instructions
+
   attr_accessor :is_chain
 end
