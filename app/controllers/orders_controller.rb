@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
     if current_user.has_role? :superadmin
       @orders = Order.order(created_at: :desc).paginate(:page => params[:page], per_page: 5).search(params[:search])
     elsif current_user.has_role? :admin
-      @orders = Order.where(chain_id: current_user.chain_id).order(created_at: :desc).paginate(:page => params[:page], per_page: 5)
+      @orders = Order.where(chain_id: current_user.chain_id).order(created_at: :desc).paginate(:page => params[:page], per_page: 5).search(params[:search])
     end
   end
 

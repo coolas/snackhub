@@ -16,6 +16,7 @@
 	<thead>
 		<tr>
 			<th>Reference Number</th>
+			<th>Date/Time</th>
 			<th>Cinema Number</th>
 			<th>Remarks</th>
 			<th>Contact Number</th>
@@ -28,6 +29,7 @@
 		<% @orders.each do |order| %>
 			<tr>
 				<td><%= link_to order.reference_number, order_path(order) %></td>
+				<td><%= link_to order.created_at, order_path(order) %></td>
 				<td><%= link_to order.cinema_number, order_path(order) %></td>
 				<td><%= link_to order.remarks, order_path(order) %></td>
 				<td><%= link_to order.contact_number, order_path(order) %></td>

@@ -13,4 +13,10 @@ class User < ActiveRecord::Base
   after_create :send_confirmation_instructions
 
   attr_accessor :is_chain
+
+  def set_role
+    if self.role_id == 2
+      self.add_role :admin
+    end
+  end
 end

@@ -1,5 +1,9 @@
 <div class="page-header">
   <h1>Items</h1>
+  	<%= form_tag(items_path, :method => "get") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Items" %>
+    <%= submit_tag "Search", :all => nil %>
+    <% end %>
 </div>
 
 <%= link_to 'Add Item', new_item_path, class: 'btn btn-primary pull-right' %>
@@ -26,3 +30,4 @@
 		<% end %>
 	</tbody>
 </table>
+<%= will_paginate @items %>

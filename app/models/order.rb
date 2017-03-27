@@ -15,7 +15,7 @@ class Order < ActiveRecord::Base
 
  def self.search(search)
   	@orders = Order.all
-    @orders = where (['cinema_number LIKE :search OR remarks LIKE :search OR contact_number LIKE :search OR reference_number LIKE :search', search: "%#{search}%"])
+    @orders = where(['cinema_number LIKE :search OR remarks LIKE :search OR contact_number LIKE :search OR reference_number LIKE :search', search: "%#{search}%"])
  
  end
 

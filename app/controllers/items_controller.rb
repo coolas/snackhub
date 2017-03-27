@@ -3,9 +3,9 @@ class ItemsController < ApplicationController
 
   def index
     if current_user.has_role? :superadmin
-      @items = Item.all
+      @items = Item.all.order(created_at: :desc).paginate(:page => params[:page], per_page: 5).search(params[:search])
     elsif current_user.has_role? :admin
-      @items = Item.where(menu_id: current_user.chain.menus.first.id)
+      @items = Item.where(menu_id: current_user.chain.menus.first.id).order(created_at: :desc).paginate(:page => params[:page], per_page: 5).search(params[:search])
     end
   end
 
