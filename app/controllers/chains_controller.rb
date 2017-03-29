@@ -2,9 +2,11 @@ class ChainsController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @chains = Chain.all
-    #respond_to do |format|
-     #format.html
+    if current_user.has_role? :superadmin
+      @chains = Chain.all
+    elsif current_user.has_role? :admin
+      @chains = Chain.where(id: current_user.chain_id)
+    end
   end
 
   def show

@@ -11,6 +11,8 @@ class OrdersController < ApplicationController
 
   def show
   	@order = Order.find(params[:id])
+    @order_items = OrderItem.where(order_id: @order.id)
+    @customer = User.find(@order.user_id)
   end
 
   def new #new record

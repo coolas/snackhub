@@ -1,7 +1,11 @@
 <ul class="list-group">
-  <li class="list-group-item"><a href="/malls">Malls</a></li>
+  <% if current_user.has_role? :superadmin %>
+  	<li class="list-group-item"><a href="/malls">Malls</a></li>
+  <% end %>
   <li class="list-group-item"><a href="/chains">Chains</a></li>
-  <li class="list-group-item"><a href="/menus">Menus</a></li>
+  <% if current_user.has_role? :admin %>
+  	<li class="list-group-item"><a href="/menus">Menus</a></li>
+  <% end %>
   <li class="list-group-item"><a href="/items">Items</a></li>
   <li class="list-group-item"><a href="/orders">Orders</a></li>
   <li class="list-group-item"><a href="/orders/">Reports</a></li>

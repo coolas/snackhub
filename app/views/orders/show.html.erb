@@ -1,2 +1,12 @@
 <%= @order.cinema_number %>
+<%= @customer.email %>
+<%= @customer.first_name %>
+<%= @customer.last_name %>
+
 <%= link_to 'go back', orders_path %>
+
+<% @order_items.each do |order_item| %>
+	<%= order_item.name %>
+	<%= order_item.quantity %>
+	<%= order_item.subtotal %>
+<% end %>

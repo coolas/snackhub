@@ -2,7 +2,9 @@
   <h1>Chains</h1>
 </div>
 
-<%= link_to 'Add Chains', new_chain_path, class: 'btn btn-primary pull-right' %>
+<% if current_user.chain_id.nil? %>
+	<%= link_to 'Add Chains', new_chain_path, class: 'btn btn-primary pull-right' %>
+<% end %>
 
 <table class="table">
 	<thead>

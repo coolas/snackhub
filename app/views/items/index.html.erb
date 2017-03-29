@@ -6,26 +6,40 @@
     <% end %>
 </div>
 
-<%= link_to 'Add Item', new_item_path, class: 'btn btn-primary pull-right' %>
+<% if current_user.has_role? :admin %>
+	<%= link_to 'Add Item', new_item_path, class: 'btn btn-primary pull-right' %>
+<% end %>
 
 <table class="table">
 	<thead>
 		<tr>
+			<% if current_user.has_role? :superadmin %>
+				<th>Mall</th>
+				<th>Chain</th>
+			<% end %>
 			<th>Food Name</th>
 			<th>Description</th>
 			<th>Price</th>
 			<th>Image</th>
-			<th>Actions</th>
+			<% if current_user.has_role? :admin %>
+				<th>Actions</th>
+			<% end %>
 		</tr>
 	</thead>
 	<tbody>
 		<% @items.each do |item| %>
 			<tr>
+				<% if current_user.has_role? :superadmin %>
+					<td><%= item.menu.chain.mall.name %></td>
+					<td><%= item.menu.chain.name %></td>
+				<% end %>
 				<td><%= link_to item.name, item_path(item) %></td>
 				<td><%= link_to item.description, item_path(item) %></td>
 				<td><%= link_to item.price, item_path(item) %></td>
 				<td><%= image_tag item.item_image.to_s %></td>
-				<td><%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item, method: :delete %></td>
+				<% if current_user.has_role? :admin %>
+					<td><%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item, method: :delete %></td>
+				<% end %>
 			</tr>
 		<% end %>
 	</tbody>

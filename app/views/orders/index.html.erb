@@ -9,9 +9,6 @@
 
 </div>
 
-<%= link_to 'Add Orders', new_order_path, class: 'btn btn-primary pull-right' %>
-
-
 <table id="Orders" class="table">
 	<thead>
 		<tr>
@@ -35,7 +32,11 @@
 				<td><%= link_to order.contact_number, order_path(order) %></td>
 				<td><%= link_to order.total, order_path(order) %></td>
 				<td><%= link_to order.status, order_path(order) %></td>
-				<td><%= link_to 'Edit', edit_order_path(order) %> | <%= link_to 'Delete', order, method: :delete %></td>
+				<td>
+					<%= link_to 'Edit', edit_order_path(order) %> | 
+					<%= link_to 'Delete', order, method: :delete, data: {confirm: "Are you sure?"} %>
+					
+				</td>
 			</tr>
 		<% end %>
 	</tbody>
