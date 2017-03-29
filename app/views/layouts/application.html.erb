@@ -19,13 +19,13 @@
 			</div>
 
 			<div class="col-md-10">
+				<%= flash_messages %>
 				<%= yield %>
 			</div>
 		</div>
 	</div>
 <% else %>
-	<div class="container"><%= yield %></div>
+	<div class="container"><%= flash_messages %><%= yield %></div>
 <% end %>
-
 </body>
 </html>
