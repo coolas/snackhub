@@ -10,12 +10,13 @@ class User < ActiveRecord::Base
   belongs_to :chain
   has_many :orders
 
-  after_create :send_confirmation_instructions
+  after_create :set_role, :send_confirmation_instructions
 
-  attr_accessor :is_chain
+
+  attr_accessor :is_chain, :role_id
 
   def set_role
-    if self.role_id == 2
+    if self.role_id == '2'
       self.add_role :admin
     end
   end
