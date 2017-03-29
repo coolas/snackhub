@@ -19,6 +19,22 @@ class Order < ActiveRecord::Base
  
  end
 
+ def mall
+ 	if self.mall_id.nil?
+ 		nil
+ 	else
+ 		Mall.find(self.mall_id).name
+ 	end
+ end
+
+ def chain
+ 	if self.chain_id.nil?
+ 		nil
+ 	else
+ 		Chain.find(self.chain_id).name
+ 	end
+ end
+
 
 end
 

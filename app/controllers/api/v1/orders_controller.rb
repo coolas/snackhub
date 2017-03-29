@@ -16,7 +16,7 @@ module Api
       end
       def show
         @order = Order.find(params[:id])
-        render json: @order, root: false
+        render json: @order.attributes.merge({mall: @order.mall, chain: @order.chain}), root: false
       end
      
       def create
