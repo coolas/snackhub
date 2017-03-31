@@ -67,4 +67,5 @@ gem 'sass-rails', '>= 3.2'
 gem 'carrierwave', '~> 1.0'
 gem 'fog-aws'
 gem 'chartkick'
+gem 'bootstrap-datepicker-rails'
 

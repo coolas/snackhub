@@ -4,33 +4,51 @@
 
 <div class="container">
 
-<% if current_user.has_role? :admin %>
-<h2> Daily </h2>
-<p>Daily Total: <%= @chain.daily_total %></p>
-<%= line_chart(@chain.daily_sales) %>
 
-<h2> Weekly </h2>
-<p>Weekly Total: <%= @chain.weekly_total %></p>
-<%= line_chart(@chain.weekly_sales) %>
-
-<h2> Monthly </h2>
-<p>Monthly Total: <%= @chain.monthly_total %></p>
-<%= line_chart(@chain.monthly_sales) %>
-
-<% end %>
-
+<label>Select Date</label>
+<input type="text" class="datepicker" value="<%= @selected_date %>">
 <% if current_user.has_role? :superadmin %>
-<h2> Daily </h2>
+<label>Select Chain</label>
+<select class="chain">
+	<%= @chains.each do |chain| %>
+		<option value="<%= chain.id %>"><%= chain.name %></option>
+	<% end %>
+</select>
+<% end %>
+<% !@selected_date.nil? && if current_user.has_role? :admin %>
 
-<%= line_chart(@chain.daily_sales) %>
+<h2> Daily </h2>
+<p>Daily Total: <%= @chain.daily_total(@selected_date) %></p>
+
+<%= line_chart(@chain.daily_sales(@selected_date)) %>
 
 <h2> Weekly </h2>
-
-<%= line_chart(@chain.weekly_sales) %>
+<p>Weekly Total: <%= @chain.weekly_total(@selected_date) %></p>
+<%= line_chart(@chain.weekly_sales(@selected_date)) %>
 
 <h2> Monthly </h2>
-
-<%= line_chart(@chain.monthly_sales) %>
+<p>Monthly Total: <%= @chain.monthly_total(@selected_date) %></p>
+<%= line_chart(@chain.monthly_sales(@selected_date)) %>
 
 <% end %>
+
+
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.datepicker').datepicker({ format: 'yyyy/mm/dd' })
+	    .on('changeDate', function(e){
+	    	date = new Date(e.date);
+			formattedDate = date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate();
+	    	path = "/reports?selected_date=" + formattedDate + "&selected_chain_id=" + $('.chain').val();
+	    	window.location.href = path;
+	    });
+
+	$('.chain').change(function(){
+		formattedDate = $('.datepicker').val();
+		path = "/reports?selected_date=" + formattedDate + "&selected_chain_id=" + $(this).val();
+	    window.location.href = path;
+	});
+  });
+</script>

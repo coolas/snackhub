@@ -1,7 +1,20 @@
-<%= @order.cinema_number %>
-<%= @customer.email %>
-<%= @customer.first_name %>
-<%= @customer.last_name %>
+
+<table id="Orders" class="table">
+	<thead>
+		<tr>
+			<th>Email</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+		</tr>
+	</thead>
+ 	<thead>
+ 	<tr>
+	<td><%= @customer.email %></td>
+	<td><%= @customer.first_name %></td>
+	<td><%= @customer.last_name %></td>
+	</tr>
+	</thead>
+</table>
 
 <%= link_to 'go back', orders_path %>
 
