@@ -2,11 +2,8 @@
   <h1>Menu</h1>
 </div>
 
-<% if !current_user.chain_id.nil? %>
-	<% if current_user.chain.menus.nil? %>
+
 		<%= link_to 'Add Menu', new_menu_path, class: 'btn btn-primary pull-right' %>
-	<% end %>
-<% end %>
 
 <table class="table">
 	<thead>
