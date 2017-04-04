@@ -1,0 +1,15 @@
+<div class="container">
+	<%= simple_form_for(@card) do |f| %>
+		<% if @card.errors.any? %>
+		<%= pluralize(@card.errors.count, "error") %>
+			<%= @card.errors.full_messages.each do |msg| %>
+		<%= msg %>
+			<% end %>
+		<% end %>
+		<%= f.error_notification %>
+		<%= f.input :amount %>
+		<%= f.button :submit %>
+
+	<% end %>
+</div>
+

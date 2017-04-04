@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   resources :menus
   resources :orders
   resources :reports
+  resources :cards
   
 
 
