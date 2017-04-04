@@ -17,7 +17,7 @@
 			<tr>
 				<td><%= link_to card.card_number, card_path(card) %></td>
 				<td><%= card.amount %></td>
-				<td><%= link_to 'Edit', edit_card_path(card) %> | <%= link_to 'Delete', mall, method: :delete %></td>
+				<td><%= link_to 'Edit', edit_card_path(card) %> | <%= link_to 'Delete', card, method: :delete %></td>
 			</tr>
 		<% end %>
 	</tbody>
