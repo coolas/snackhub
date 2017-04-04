@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170323111918) do
+ActiveRecord::Schema.define(version: 20170403091405) do
 
   create_table "add_cinema_number_to_orders", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20170323111918) do
     t.string   "status",           limit: 255
     t.integer  "chain_id",         limit: 4
     t.integer  "mall_id",          limit: 4
+    t.integer  "payment_method",   limit: 4
   end
 
   add_index "orders", ["chain_id"], name: "index_orders_on_chain_id", using: :btree
@@ -136,6 +137,7 @@ ActiveRecord::Schema.define(version: 20170323111918) do
     t.string   "confirmation_token",     limit: 255
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.float    "account_balance",        limit: 24
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
