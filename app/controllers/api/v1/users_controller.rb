@@ -29,6 +29,7 @@ module Api
       end
      
       def update
+        @user = User.find(params[:id])
         if @user.update_attributes(user_params)
           render json: @user
         end
