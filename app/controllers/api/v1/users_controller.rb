@@ -31,7 +31,9 @@ module Api
       def update
         @user = User.find(params[:id])
         if @user.update_attributes(user_params)
-          render json: @user
+          render json: @user, status: :updated
+        else
+          render json: @user.errors, status: :unprocessable_entity
         end
       end
 
@@ -42,7 +44,7 @@ module Api
       private
 
       def user_params
-        params.require(:user).permit(:account_balance)
+        params.require(:user).permit(:account_balance, :email, :first_name, :last_name)
       end
     end
   end
