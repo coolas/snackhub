@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170405011159) do
+ActiveRecord::Schema.define(version: 20170406231325) do
 
   create_table "add_cinema_number_to_orders", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20170405011159) do
     t.float    "amount",      limit: 24
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.boolean  "is_redeemed"
   end
 
   create_table "chains", force: :cascade do |t|
@@ -111,6 +112,18 @@ ActiveRecord::Schema.define(version: 20170405011159) do
   add_index "orders", ["chain_id"], name: "index_orders_on_chain_id", using: :btree
   add_index "orders", ["mall_id"], name: "index_orders_on_mall_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
+  create_table "redemptions", force: :cascade do |t|
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "user_id",     limit: 4
+    t.integer  "card_id",     limit: 4
+    t.string   "card_number", limit: 255
+  end
+
+  add_index "redemptions", ["card_id"], name: "index_redemptions_on_card_id", using: :btree
+  add_index "redemptions", ["card_number"], name: "index_redemptions_on_card_number", using: :btree
+  add_index "redemptions", ["user_id"], name: "index_redemptions_on_user_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name",          limit: 255

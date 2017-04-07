@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         resources :orders
         resources :order_items
         resources :users
+        resources :redemptions
       end
     end
   
